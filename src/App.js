@@ -1,14 +1,17 @@
 import "./App.css";
+import Header from "./ui/components/common/header";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Link to="/home">Home</Link>
-        <Link to="/profile">Profile</Link>
-      </header>
+      {/* <header> */}
+      {/* <header className="App-header"> */}
+      {/* <Link to="/home">Home</Link>
+        <Link to="/profile">Profile</Link> */}
+      <Header />
+      {/* </header> */}
     </div>
   );
 }

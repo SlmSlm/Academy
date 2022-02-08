@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "@linkup/eslint-config-next-js": "github:LinkUpStudio/eslint-config-react.git#v1.0.5"
+    "@linkup/eslint-config-next-js": "github:LinkUpStudioOld /eslint-config-react.git#v1.0.5"
   }
 }
