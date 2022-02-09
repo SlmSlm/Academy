@@ -1,18 +1,18 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import AppRouter from "./ui/boot/router";
 import Header from "./ui/components/common/header";
 
 // import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      {/* <header> */}
-      {/* <header className="App-header"> */}
-      {/* <Link to="/home">Home</Link>
-        <Link to="/profile">Profile</Link> */}
-      <Header />
-      {/* </header> */}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <AppRouter />
+      </div>
+    </BrowserRouter>
   );
 }
 
