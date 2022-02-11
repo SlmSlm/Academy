@@ -48,20 +48,22 @@ const SignUp = () => {
             required
           />
         </label>
-        <button type="submit">
-          {document.location.pathname === "/sign-up" ? "Sign Up" : "Log In"}
-        </button>
-        <span>
-          {document.location.pathname === "/sign-up" ? (
-            <>
-              Have a account? <Link to="/sign-in">Log In</Link>{" "}
-            </>
-          ) : (
-            <>
-              Don`t have an account? <Link to="/sign-up">Sign Up</Link>
-            </>
-          )}
-        </span>
+        <div className={styles.buttonBlock}>
+          <button type="submit">
+            {document.location.pathname === "/sign-up" ? "Sign Up" : "Log In"}
+          </button>
+          <span>
+            {document.location.pathname === "/sign-up" ? (
+              <>
+                Have a account? <Link to="/sign-in">Log In</Link>{" "}
+              </>
+            ) : (
+              <>
+                Don`t have an account? <Link to="/sign-up">Sign Up</Link>
+              </>
+            )}
+          </span>
+        </div>
       </div>
     </div>
   );
