@@ -1,0 +1,70 @@
+.content {
+  display: flex;
+  margin-top: 34px;
+  padding-bottom: 32px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.form {
+  display: flex;
+  max-width: 360px;
+  width: 80%;
+  flex-direction: column;
+  text-align: left;
+
+  h2 {
+    margin-top: 0;
+    font-family: Poppins;
+    font-style: normal;
+    font-size: 48px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+    font-size: 12px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    color: #808080;
+  }
+
+  input,
+  textarea {
+    margin-top: 4px;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #c9cad1;
+    border-radius: 12px;
+  }
+
+  textarea {
+    height: 88px;
+    resize: none;
+  }
+
+  button {
+    height: 48px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    background: #0087ff;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .cancelBtn {
+    margin-top: 8px;
+    background: #ffffff;
+    color: #010101;
+    border: 1px solid #c9cad1;
+  }
+}
+
+// @media (min-width: 768px) {
+// }
