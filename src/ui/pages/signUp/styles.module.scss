@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 142px;
+  margin-top: 64px;
 }
 
 .imageBlock {
+  display: none;
   max-width: 500px;
   width: 40%;
 }
@@ -15,12 +16,14 @@
 
 .form {
   display: flex;
+  height: calc(100vh - 128px - 32px);
   max-width: 360px;
-  width: 40%;
+  width: 80%;
   flex-direction: column;
   text-align: left;
 
   h2 {
+    margin-top: 0;
     font-family: Poppins;
     font-style: normal;
     font-size: 48px;
@@ -50,6 +53,12 @@
     }
   }
 
+  .buttonBlock {
+    display: flex;
+    margin-top: auto;
+    flex-direction: column;
+  }
+
   button {
     height: 48px;
     margin-bottom: 16px;
@@ -73,5 +82,20 @@
       text-decoration: none;
       color: #0087ff;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin-top: 142px;
+  }
+
+  .imageBlock {
+    display: block;
+  }
+
+  .form {
+    width: 40%;
+    height: auto;
   }
 }
