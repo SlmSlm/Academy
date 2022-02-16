@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import HTTP from "../../../api/api";
 import ProfilePhoto from "../../../public/images/sign-up-photo.png";
 import Header from "../../components/common/header";
 
 import styles from "./styles.module.scss";
 
-const SignUp = () => {
+const Entry = () => {
   interface IuserData {
     username?: string;
     login?: string;
@@ -19,49 +20,45 @@ const SignUp = () => {
     password: "",
   });
 
+  const isSignUp = document.location.pathname === "/sign-up";
+
   const signUp = async () => {
-    const response = await fetch("https://linkstagram-api.ga/create-account", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    // const response = await fetch("https://linkstagram-api.ga/create-account", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(userData),
+    // });
+    // const result = await response.json();
+    // console.log(result);
 
-    const result = await response.json();
-
-    console.log(result);
+    HTTP.post("create-account", userData);
   };
 
   const signIn = async () => {
     const body = { login: userData.login, password: userData.password };
-    const response = await fetch("https://linkstagram-api.ga/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
+
+    HTTP.post("/login", body).then((response) => {
+      console.log(response);
     });
-
-    const result = await response.json();
-
-    console.log(result);
   };
 
   const handleSubmit = () => {
+    if (isSignUp) {
+      signUp();
+    } else {
+      signIn();
+    }
+  };
+
+  const handleChange = () => {
     setUserData({
       login: (document.getElementById("login") as HTMLInputElement).value,
       password: (document.getElementById("password") as HTMLInputElement).value,
       username: (document.getElementById("name") as HTMLInputElement)?.value,
     });
-
-    if (document.location.pathname === "/sign-up") {
-      signUp();
-    } else {
-      signIn();
-    }
   };
 
   return (
@@ -72,11 +69,7 @@ const SignUp = () => {
           <img src={ProfilePhoto} className={styles.profilePhoto} alt=" " />
         </div>
         <div className={styles.form}>
-          {document.location.pathname === "/sign-up" ? (
-            <h2>Sign Up</h2>
-          ) : (
-            <h2>Log In</h2>
-          )}
+          {isSignUp ? <h2>Sign Up</h2> : <h2>Log In</h2>}
           <label htmlFor="email">
             Email
             <input
@@ -85,9 +78,10 @@ const SignUp = () => {
               name="email"
               id="login"
               required
+              onChange={() => handleChange()}
             />
           </label>
-          {document.location.pathname === "/sign-up" && (
+          {isSignUp && (
             <>
               <label htmlFor="name">
                 User Name
@@ -97,6 +91,7 @@ const SignUp = () => {
                   name="name"
                   id="name"
                   required
+                  onChange={() => handleChange()}
                 />
               </label>
             </>
@@ -109,14 +104,15 @@ const SignUp = () => {
               name="password"
               id="password"
               required
+              onChange={() => handleChange()}
             />
           </label>
           <div className={styles.buttonBlock}>
             <button type="submit" onClick={() => handleSubmit()}>
-              {document.location.pathname === "/sign-up" ? "Sign Up" : "Log In"}
+              {isSignUp ? "Sign Up" : "Log In"}
             </button>
             <span>
-              {document.location.pathname === "/sign-up" ? (
+              {isSignUp ? (
                 <>
                   Have a account? <Link to="/sign-in">Log In</Link>{" "}
                 </>
@@ -133,4 +129,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Entry;
